@@ -1,8 +1,11 @@
 const webpack = require('webpack')
-const merge = require('webpack-merge')
+const merge = require('webpack-merge').strategy({ entry: 'prepend' })
 const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
+  entry: {
+    app: [ 'react-hot-loader/patch' ]
+  },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: common.output.path,
@@ -11,6 +14,9 @@ module.exports = merge(common, {
     hot: true
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]

@@ -3,5 +3,12 @@
     "@babel/preset-env",
     "@babel/preset-stage-2",
     "@babel/preset-react"
-  ]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
+    }
+  }
 }
