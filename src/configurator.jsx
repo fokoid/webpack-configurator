@@ -15,9 +15,9 @@ const styles = {
   }
 }
 
-const Configurator = ({classes}) => (
+const Configurator = ({ classes }) => (
   <div className={classes.root}>
-    <ExpansionPanel expanded>
+    <ExpansionPanel defaultExpanded>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <Typography type='subheading'>Basic Configuration</Typography>
       </ExpansionPanelSummary>
