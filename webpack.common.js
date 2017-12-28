@@ -6,7 +6,10 @@ const dist = path.join(__dirname, 'dist')
 
 module.exports = {
   entry: {
-    app: [ './src/index.js' ]
+    app: [ './src/index.js' ],
+    vendor: [
+      'webpack-material-design-icons'
+    ]
   },
   output: {
     filename: '[name].bundle.js',

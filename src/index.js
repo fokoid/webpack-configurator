@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+import 'typeface-roboto'
 import App from './app.jsx'
 
 const main = document.createElement('main')
