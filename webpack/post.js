@@ -1,7 +1,7 @@
 const OfflinePlugin = require('offline-plugin')
 
-module.exports = {
+module.exports = () => ({
   plugins: [
     new OfflinePlugin()
   ]
-}
+})

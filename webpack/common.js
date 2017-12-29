@@ -1,9 +1,8 @@
 const path = require('path'),
       CleanWebpackPlugin = require('clean-webpack-plugin'),
-      HtmlWebpackPlugin = require('html-webpack-plugin'),
-      dist = 'dist'
+      HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = {
+module.exports = (dirname, dist) => ({
   entry: {
     app: [ './src/index.js' ],
     vendor: [
@@ -12,7 +11,7 @@ module.exports = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, dist)
+    path: path.resolve(dirname, dist)
   },
   module: {
     loaders: [
@@ -23,10 +22,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin([dist]),
+    new CleanWebpackPlugin([dist], { root: dirname }),
     new HtmlWebpackPlugin({
       title: 'Webpack Configurator',
       inject: 'body'
     })
   ]
-}
+})

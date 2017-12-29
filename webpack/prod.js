@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
-module.exports = {
+module.exports = () => ({
   devtool: 'source-map',
   plugins: [
     new UglifyJSPlugin({
@@ -11,4 +11,4 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('production')
     })
   ]
-}
+})

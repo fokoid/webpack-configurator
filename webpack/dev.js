@@ -1,13 +1,13 @@
-const webpack = require('webpack')
-const { output } = require('./common.js')
+const path = require('path'),
+      webpack = require('webpack')
 
-module.exports = {
+module.exports = (dirname, dist) => ({
   entry: {
     app: [ 'react-hot-loader/patch' ]
   },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
-    contentBase: output.path,
+    contentBase: path.resolve(dirname, dist),
     compress: true,
     port: 3000,
     hot: true
@@ -19,4 +19,4 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]
-}
+})
