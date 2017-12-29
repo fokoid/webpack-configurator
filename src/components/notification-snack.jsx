@@ -1,14 +1,14 @@
 import React from 'react'
 import { Snackbar } from 'material-ui'
 
-const NotificationSnack = ({key, open, message, onClose}) => (
+const NotificationSnack = ({id, open, message, onClose}) => (
   <Snackbar
     anchorOrigin={{
     vertical: 'bottom',
     horizontal: 'left'
     }}
     autoHideDuration={3000}
-    key={key}
+    key={id}
     open={open}
     message={message}
     onClose={onClose}

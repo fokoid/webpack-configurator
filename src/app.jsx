@@ -20,17 +20,26 @@ class App extends Component {
   state = {
     title: 'Webpack Configurator',
     notification: {
+      id: 0,
       open: false,
       message: ''
     }
   }
 
-  closeNotification = () => { this.setState({ notification: { open: false } }) }
-  sendNotification = (message, key) => { this.setState({ notification: {
-    key: key,
-    open: true,
-    message: message
-  } }) }
+  sendNotification = message => {
+    this.setState(oldState => ({
+      notification: {
+        id: oldState.notification.id+1,
+        open: true,
+        message: message
+      }
+    }))
+  }
+  closeNotification = () => {
+    this.setState(oldState => ({
+      notification: { ...oldState.notification, open: false }
+    }))
+  }
 
   render = () => (
     <div className={this.props.classes.app}>
@@ -63,7 +72,7 @@ class App extends Component {
         </Grid>
       </Grid>
       <NotificationSnack
-        key={this.state.notification.key}
+        id={this.state.notification.id}
         open={this.state.notification.open}
         message={this.state.notification.message}
         onClose={this.closeNotification}
