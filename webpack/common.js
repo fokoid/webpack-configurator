@@ -1,8 +1,7 @@
-const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-
-const dist = path.join(__dirname, 'dist')
+const path = require('path'),
+      CleanWebpackPlugin = require('clean-webpack-plugin'),
+      HtmlWebpackPlugin = require('html-webpack-plugin'),
+      dist = 'dist'
 
 module.exports = {
   entry: {
@@ -13,7 +12,7 @@ module.exports = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: dist
+    path: path.resolve(__dirname, dist)
   },
   module: {
     loaders: [
