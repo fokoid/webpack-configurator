@@ -20,10 +20,11 @@ const styles = {
 
 const ConfigView = ({ classes, configs, sendNotification }) => (
   <div className={classes.root}>
-    {configs.map(({name, filename, content}) => <FileViewer
+    {configs.map(({name, filename, language, content}) => <FileViewer
       key={filename}
-      title={name}
+      language={language}
       filename={filename}
+      baseurl='/files'
       content={content}
       callbacks={{
         copy: () => sendNotification('Copied to clipboard')

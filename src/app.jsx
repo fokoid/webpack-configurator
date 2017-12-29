@@ -43,18 +43,18 @@ class App extends Component {
           <ConfigViewer
             configs={[
               {
-              name: 'Webpack Configuration',
               filename: 'webpack.config.js',
+              language: 'javascript',
               content: 'webpack config :)'
               },
               {
-              name: 'Babel',
               filename: '.babelrc',
+              language: 'json',
               content: 'babel config :)'
               },
               {
-              name: 'Package Configuration',
               filename: 'package.json',
+              language: 'json',
               content: 'package config :)'
               }
             ]}

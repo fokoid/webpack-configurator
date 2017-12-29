@@ -10,11 +10,26 @@ import {
 } from 'material-ui'
 import { ExpandMore as ExpandMoreIcon } from 'material-ui-icons'
 import { CopyToClipboard} from 'react-copy-to-clipboard'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import {
+  solarizedLight as SolarizedLightTheme,
+  solarizedDark as SolarizedDarkTheme
+} from 'react-syntax-highlighter/styles/hljs';
 import urlJoin from 'url-join'
 
 const styles = {
-  name: {
-    flex: 1
+  filename: {
+    minHeight: '32px',
+    height: '32px'
+  },
+  code: {
+    paddingLeft: '12px',
+    paddingRight: '12px',
+    paddingTop: '0px',
+    paddingBottom: '0px'
+  },
+  codeInner: {
+    width: '100%'
   }
 }
 
@@ -30,23 +45,31 @@ class FileViewer extends Component {
   componentDidMount = () => {
     console.log(this.fileUrl)
     fetch(this.fileUrl)
-    .then(res => res.text())
-    .then(text => this.setState({ content: text }))
+      .then(res => {
+        if (res.status === 200)
+          return res.text()
+        return this.props.content
+      })
+      .then(text => this.setState({ content: text }))
       .catch(err => console.log(err))
   }
 
   render = () => (
     <ExpansionPanel defaultExpanded>
-      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography type='subheading'>
-          <span className={this.props.classes.name}>
-            {this.props.title}
-          </span>
-          <code>{this.props.filename}</code>
-        </Typography>
+      <ExpansionPanelSummary
+        className={this.props.classes.filename}
+        expandIcon={<ExpandMoreIcon />}
+      >
+        <code>{this.props.filename}</code>
       </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
-        <Typography>{this.state.content}</Typography>
+      <ExpansionPanelDetails className={this.props.classes.code}>
+        <SyntaxHighlighter
+          className={this.props.classes.codeInner}
+          language={this.props.language}
+          style={SolarizedLightTheme}
+        >
+          {this.state.content}
+        </SyntaxHighlighter>
       </ExpansionPanelDetails>
       <ExpansionPanelActions>
         <Button
