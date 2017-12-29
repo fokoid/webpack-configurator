@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   render = () => (
-    <div className={this.props.classes.app}>
+    <div className={this.props.classes.root}>
       <TitleBar />
       <Grid container spacing={24}>
         <Grid item xs>

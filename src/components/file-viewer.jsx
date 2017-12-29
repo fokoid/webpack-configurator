@@ -42,17 +42,14 @@ class FileViewer extends Component {
 
   fileUrl = urlJoin(this.props.baseurl, this.props.filename)
 
-  componentDidMount = () => {
-    console.log(this.fileUrl)
-    fetch(this.fileUrl)
-      .then(res => {
-        if (res.status === 200)
-          return res.text()
-        return this.props.content
-      })
-      .then(text => this.setState({ content: text }))
-      .catch(err => console.log(err))
-  }
+  componentDidMount = () => fetch(this.fileUrl)
+    .then(res => {
+      if (res.status === 200)
+        return res.text()
+      return this.props.content
+    })
+    .then(text => this.setState({ content: text }))
+    .catch(err => console.log(err))
 
   render = () => (
     <ExpansionPanel defaultExpanded>
