@@ -1,7 +1,10 @@
-const OfflinePlugin = require('offline-plugin')
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 
 module.exports = () => ({
   plugins: [
-    new OfflinePlugin()
+    new WorkboxWebpackPlugin({
+      clientsClaim: true,
+      skipWaiting: true
+    })
   ]
 })
