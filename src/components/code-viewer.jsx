@@ -6,6 +6,7 @@ import {
   ExpansionPanelSummary,
   ExpansionPanelDetails,
   ExpansionPanelActions,
+  Tooltip
   withStyles
 } from 'material-ui'
 import { ExpandMore as ExpandMoreIcon } from 'material-ui-icons'
@@ -35,6 +36,8 @@ class CodeViewer extends Component {
   state = {
     content: this.props.content
   }
+
+  isDotFile = () => this.props.filename && this.props.filename[0] === '.'
 
   componentDidMount = async () => {
     if (!this.props.url) return
@@ -72,6 +75,7 @@ class CodeViewer extends Component {
           href={`data:text/plain,${this.state.content}`}
           download={this.props.filename}
           onClick={this.props.callbacks.download}
+          disabled={this.isDotFile()}
         >Download</Button>
         <Button
           dense
