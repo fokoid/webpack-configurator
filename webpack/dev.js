@@ -1,7 +1,7 @@
 const path = require('path'),
       webpack = require('webpack')
 
-module.exports = (dirname, dist) => ({
+module.exports = ({dirname, dist}) => ({
   entry: {
     app: [ 'react-hot-loader/patch' ]
   },

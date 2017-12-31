@@ -1,10 +1,11 @@
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
+const path = require('path'),
+      WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 
-module.exports = () => ({
+module.exports = ({src, dist}) => ({
   plugins: [
     new WorkboxWebpackPlugin({
-      clientsClaim: true,
-      skipWaiting: true
+      swSrc: path.join(src, 'sw.js'),
+      swDest: path.join(dist, 'sw.js')
     })
   ]
 })

@@ -2,7 +2,7 @@ const path = require('path'),
       CleanWebpackPlugin = require('clean-webpack-plugin'),
       HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = (dirname, dist) => ({
+module.exports = ({dirname, dist}) => ({
   entry: {
     app: [ './src/index.js' ],
     vendor: [
