@@ -4,7 +4,10 @@ const path = require('path'),
 
 module.exports = ({dirname, dist}) => ({
   entry: {
-    app: [ './src/index.js' ],
+    app: [
+      'babel-polyfill',
+      './src/index.js'
+    ],
     vendor: [
       'webpack-material-design-icons'
     ]

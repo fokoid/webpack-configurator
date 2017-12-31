@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import {
   Button,
   Typography,
@@ -9,59 +9,56 @@ import {
   withStyles
 } from 'material-ui'
 import { ExpandMore as ExpandMoreIcon } from 'material-ui-icons'
-import { CopyToClipboard} from 'react-copy-to-clipboard'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import {
   solarizedLight as SolarizedLightTheme,
-  solarizedDark as SolarizedDarkTheme
 } from 'react-syntax-highlighter/styles/hljs';
-import urlJoin from 'url-join'
 
 const styles = {
-  filename: {
+  title: {
     minHeight: '32px',
     height: '32px'
   },
-  code: {
+  body: {
     paddingLeft: '12px',
     paddingRight: '12px',
     paddingTop: '0px',
     paddingBottom: '0px'
   },
-  codeInner: {
+  code: {
     width: '100%'
   }
 }
 
-//TODO Implement downloading of file content
-//TODO Implement opening file in new tab
-class FileViewer extends Component {
+class CodeViewer extends Component {
   state = {
-    content: this.props.content || 'Loading...'
+    content: this.props.content
   }
 
-  fileUrl = urlJoin(this.props.baseurl, this.props.filename)
+  componentDidMount = async () => {
+    if (!this.props.url) return
 
-  componentDidMount = () => fetch(this.fileUrl)
-    .then(res => {
-      if (res.status === 200)
-        return res.text()
-      return this.props.content
-    })
-    .then(text => this.setState({ content: text }))
-    .catch(err => console.log(err))
+    try {
+      const response = await fetch(this.props.url)
+      if (response.status === 200)
+        this.setState({ content: await response.text() })
+    } catch(err) {
+      console.log(err)
+    }
+  }
 
   render = () => (
     <ExpansionPanel defaultExpanded>
       <ExpansionPanelSummary
-        className={this.props.classes.filename}
+        className={this.props.classes.title}
         expandIcon={<ExpandMoreIcon />}
       >
-        <code>{this.props.filename}</code>
+        <pre>{this.props.filename}</pre>
       </ExpansionPanelSummary>
-      <ExpansionPanelDetails className={this.props.classes.code}>
+      <ExpansionPanelDetails className={this.props.classes.body}>
         <SyntaxHighlighter
-          className={this.props.classes.codeInner}
+          className={this.props.classes.code}
           language={this.props.language}
           style={SolarizedLightTheme}
         >
@@ -72,14 +69,18 @@ class FileViewer extends Component {
         <Button
           dense
           color='primary'
-          onClick={() => { console.log('Downloads not yet implemented.') }}
+          href={`data:text/plain,${this.state.content}`}
+          download={this.props.filename}
+          onClick={this.props.callbacks.download}
         >Download</Button>
         <Button
           dense
           color='primary'
-          onClick={() => { console.log('Opening in new tab not yet implemented.') }}
+          href={this.props.url}
+          target='_blank'
+          onClick={this.props.callbacks.open}
         >Open</Button>
-        <CopyToClipboard text={this.props.content}>
+        <CopyToClipboard text={this.state.content}>
           <Button
             dense
             color='primary'
@@ -91,4 +92,4 @@ class FileViewer extends Component {
   )
 }
 
-export default withStyles(styles)(FileViewer)
+export default withStyles(styles)(CodeViewer)

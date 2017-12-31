@@ -52,21 +52,22 @@ class App extends Component {
           <ConfigViewer
             configs={[
               {
-              filename: 'webpack.config.js',
-              language: 'javascript',
-              content: 'webpack config :)'
+                filename: 'webpack.config.js',
+                language: 'javascript',
+                content: 'webpack config :)'
               },
               {
-              filename: '.babelrc',
-              language: 'json',
-              content: 'babel config :)'
+                filename: '.babelrc',
+                language: 'json',
+                content: 'babel config :)'
               },
               {
-              filename: 'package.json',
-              language: 'json',
-              content: 'package config :)'
+                filename: 'package.json',
+                language: 'json',
+                content: 'package config :)'
               }
             ]}
+            baseUrl='/config/files'
             sendNotification={this.sendNotification}
           />
         </Grid>

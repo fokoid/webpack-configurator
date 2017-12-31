@@ -10,7 +10,8 @@ import {
   withStyles
 } from 'material-ui'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
-import FileViewer from './file-viewer.jsx'
+import urlJoin from 'url-join'
+import CodeViewer from './code-viewer.jsx'
 
 const styles = {
   root: {
@@ -18,13 +19,13 @@ const styles = {
   }
 }
 
-const ConfigView = ({ classes, configs, sendNotification }) => (
+const ConfigView = ({ classes, configs, baseUrl, sendNotification }) => (
   <div className={classes.root}>
-    {configs.map(({name, filename, language, content}) => <FileViewer
+    {configs.map(({filename, language, content}) => <CodeViewer
       key={filename}
       language={language}
       filename={filename}
-      baseurl='/files'
+      url={urlJoin(baseUrl, filename)}
       content={content}
       callbacks={{
         copy: () => sendNotification('Copied to clipboard')
