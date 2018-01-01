@@ -6,9 +6,9 @@ import {
   ExpansionPanelSummary,
   ExpansionPanelDetails,
   ExpansionPanelActions,
-  Tooltip
   withStyles
 } from 'material-ui'
+import ConditionalTooltip from './conditional-tooltip.jsx'
 import { ExpandMore as ExpandMoreIcon } from 'material-ui-icons'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import SyntaxHighlighter from 'react-syntax-highlighter'
@@ -69,14 +69,19 @@ class CodeViewer extends Component {
         </SyntaxHighlighter>
       </ExpansionPanelDetails>
       <ExpansionPanelActions>
-        <Button
-          dense
-          color='primary'
-          href={`data:text/plain,${this.state.content}`}
-          download={this.props.filename}
-          onClick={this.props.callbacks.download}
-          disabled={this.isDotFile()}
-        >Download</Button>
+        <ConditionalTooltip
+          enabled={this.isDotFile()}
+          text='Cannot download dotfiles due to browser filename restrictions.'
+        >
+          <Button
+            dense
+            color='primary'
+            href={`data:text/plain,${this.state.content}`}
+            download={this.props.filename}
+            onClick={this.props.callbacks.download}
+            disabled={this.isDotFile()}
+          >Download</Button>
+        </ConditionalTooltip>
         <Button
           dense
           color='primary'

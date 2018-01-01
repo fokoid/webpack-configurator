@@ -6,8 +6,8 @@ import {
   withStyles
 } from 'material-ui'
 
-import TitleBar from './title-bar.jsx'
-import Configurator from './configurator.jsx'
+import TitleBar from './components/title-bar.jsx'
+import Configurator from './components/configurator.jsx'
 import ConfigViewer from './components/config-viewer.jsx'
 import NotificationSnack from './components/notification-snack.jsx'
 

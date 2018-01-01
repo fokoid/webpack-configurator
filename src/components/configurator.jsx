@@ -8,6 +8,7 @@ import {
 } from 'material-ui'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import BasicConfigurator from './basic-configurator.jsx'
+import AdvancedConfigurator from './advanced-configurator.jsx'
 
 const styles = {
   root: {
@@ -25,15 +26,12 @@ const Configurator = ({ classes }) => (
         <BasicConfigurator />
       </ExpansionPanelDetails>
     </ExpansionPanel>
-
     <ExpansionPanel>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <Typography type='subheading'>Advanced Configuration</Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-        <Typography>
-          The advanced configurator is not yet implemented.
-        </Typography>
+        <AdvancedConfigurator />
       </ExpansionPanelDetails>
     </ExpansionPanel>
   </div>
