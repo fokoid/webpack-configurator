@@ -1,0 +1,12 @@
+session_name: webpack configurator
+windows:
+  - window_name: server
+    panes:
+      - shell_command: yarn start
+      - blank
+  - window_name: editor
+    panes:
+      - nvim
+  - window_name: terminal
+    panes:
+      - blank
