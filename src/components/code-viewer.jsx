@@ -9,12 +9,18 @@ import {
   withStyles
 } from 'material-ui'
 import ConditionalTooltip from './conditional-tooltip.jsx'
-import { ExpandMore as ExpandMoreIcon } from 'material-ui-icons'
+import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import SyntaxHighlighter from 'react-syntax-highlighter'
+import SyntaxHighlighter, {registerLanguage} from 'react-syntax-highlighter/light'
+import javascript from 'react-syntax-highlighter/languages/hljs/javascript'
+import json from 'react-syntax-highlighter/languages/hljs/json'
+import bash from 'react-syntax-highlighter/languages/hljs/bash'
 import {
   solarizedLight as SolarizedLightTheme,
 } from 'react-syntax-highlighter/styles/hljs';
+registerLanguage('javascript', javascript)
+registerLanguage('json', json)
+registerLanguage('sh', bash)
 
 const styles = {
   title: {
