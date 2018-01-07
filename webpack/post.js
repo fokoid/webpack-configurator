@@ -4,7 +4,11 @@ const path = require('path'),
 
 module.exports = ({src, dist}) => ({
   plugins: [
-    new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: 'bundle-report.html',
+      openAnalyzer: false
+    }),
     new WorkboxWebpackPlugin({
       swSrc: path.join(src, 'sw.js'),
       swDest: path.join(dist, 'sw.js')
