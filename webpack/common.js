@@ -6,10 +6,8 @@ module.exports = ({dirname, dist}) => ({
   entry: {
     app: [
       'babel-polyfill',
+      'webpack-material-design-icons',
       './src/index.js'
-    ],
-    vendor: [
-      'webpack-material-design-icons'
     ]
   },
   output: {
