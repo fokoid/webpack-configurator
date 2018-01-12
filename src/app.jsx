@@ -11,9 +11,20 @@ import Configurator from './components/configurator.jsx'
 import ConfigViewer from './components/config-viewer.jsx'
 import NotificationSnack from './components/notification-snack.jsx'
 
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
+import { teal, amber } from 'material-ui/colors'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: teal,
+    secondary: amber
+  }
+})
+
 const styles = {
   root: {
-    overflowX: 'hidden'
+    overflowX: 'hidden',
+    paddingBottom: 8
   }
 }
 
@@ -43,44 +54,46 @@ class App extends Component {
   }
 
   render = () => (
-    <div className={this.props.classes.root}>
-      <Reboot />
-      <TitleBar />
-      <Grid container spacing={16} justify='center'>
-        <Grid item xs={12} sm={6} lg={4}>
-          <Configurator />
+    <MuiThemeProvider theme={theme}>
+      <div className={this.props.classes.root}>
+        <Reboot />
+        <TitleBar />
+        <Grid container spacing={16} justify='center'>
+          <Grid item xs={12} sm={6} lg={4}>
+            <Configurator />
+          </Grid>
+          <Grid item xs={12} sm={6} lg={4}>
+            <ConfigViewer
+              configs={[
+                {
+                  filename: 'webpack.config.js',
+                  language: 'javascript',
+                  content: 'webpack config :)'
+                },
+                {
+                  filename: '.babelrc',
+                  language: 'json',
+                  content: 'babel config :)'
+                },
+                {
+                  filename: 'package.json',
+                  language: 'json',
+                  content: 'package config :)'
+                }
+              ]}
+              baseUrl='/config/files'
+              sendNotification={this.sendNotification}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} lg={4}>
-          <ConfigViewer
-            configs={[
-              {
-                filename: 'webpack.config.js',
-                language: 'javascript',
-                content: 'webpack config :)'
-              },
-              {
-                filename: '.babelrc',
-                language: 'json',
-                content: 'babel config :)'
-              },
-              {
-                filename: 'package.json',
-                language: 'json',
-                content: 'package config :)'
-              }
-            ]}
-            baseUrl='/config/files'
-            sendNotification={this.sendNotification}
-          />
-        </Grid>
-      </Grid>
-      <NotificationSnack
-        id={this.state.notification.id}
-        open={this.state.notification.open}
-        message={this.state.notification.message}
-        onClose={this.closeNotification}
-      />
-    </div>
+        <NotificationSnack
+          id={this.state.notification.id}
+          open={this.state.notification.open}
+          message={this.state.notification.message}
+          onClose={this.closeNotification}
+        />
+      </div>
+    </MuiThemeProvider>
   )
 }
 
