@@ -5,7 +5,6 @@ import {
   Snackbar,
   withStyles
 } from 'material-ui'
-
 import TitleBar from './components/title-bar.jsx'
 import Configurator from './components/configurator.jsx'
 import ConfigViewer from './components/config-viewer.jsx'
@@ -13,6 +12,7 @@ import NotificationSnack from './components/notification-snack.jsx'
 
 const styles = {
   root: {
+    overflowX: 'hidden'
   }
 }
 
@@ -44,11 +44,11 @@ class App extends Component {
   render = () => (
     <div className={this.props.classes.root}>
       <TitleBar />
-      <Grid container spacing={24}>
-        <Grid item xs>
+      <Grid container spacing={16} justify='center'>
+        <Grid item xs={12} sm={6} lg={4}>
           <Configurator />
         </Grid>
-        <Grid item xs>
+        <Grid item xs={12} sm={6} lg={4}>
           <ConfigViewer
             configs={[
               {
