@@ -25,7 +25,7 @@ module.exports = ({dirname, dist}) => ({
   plugins: [
     new CleanWebpackPlugin([dist], { root: dirname }),
     new HtmlWebpackPlugin({
-      title: 'Webpack Configurator',
+      template: './src/index.html',
       inject: 'body'
     })
   ]
