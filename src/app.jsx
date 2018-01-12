@@ -56,10 +56,10 @@ class App extends Component {
         <Reboot />
         <TitleBar />
         <Grid container spacing={16} justify='center'>
-          <Grid item xs={12} sm={6} lg={4}>
+          <Grid item xs={12} sm={6} md={5} lg={4} xl={3}>
             <Configurator />
           </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
+          <Grid item xs={12} sm={6} md={5} lg={4} xl={3}>
             <ConfigViewer
               configs={[
                 {
