@@ -9,9 +9,9 @@ module.exports = ({src, dist}) => ({
       reportFilename: 'bundle-report.html',
       openAnalyzer: false
     }),
-    new WorkboxWebpackPlugin({
-      swSrc: path.join(src, 'sw.js'),
-      swDest: path.join(dist, 'sw.js')
+    new WorkboxWebpackPlugin.InjectManifest({
+      swSrc: './src/sw.js',
+      swDest: 'sw.js'
     })
   ]
 })
