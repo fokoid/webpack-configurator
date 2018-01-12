@@ -5,6 +5,11 @@ const files = [
   { name: 'package.json', language: 'json', content: '{}' }
 ]
 
+workbox.core.setCacheNameDetails({
+  prefix: 'webpack-configurator',
+  suffix: 'v0-alpha1'
+})
+
 workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
 
 workbox.routing.registerRoute(
