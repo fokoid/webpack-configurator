@@ -15,7 +15,6 @@ import CodeViewer from './code-viewer.jsx'
 
 const styles = {
   root: {
-    marginTop: '5em'
   }
 }
 

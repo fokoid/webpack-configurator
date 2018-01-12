@@ -20,7 +20,7 @@ const styles = {
 
 const TitleBar = ({title, classes}) => (
   <div className={classes.root}>
-    <AppBar position='fixed'>
+    <AppBar position='static'>
       <Toolbar>
         <Typography className={classes.flex} type='title' color='inherit'>
           Webpack Configurator

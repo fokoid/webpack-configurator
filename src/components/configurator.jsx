@@ -12,7 +12,6 @@ import AdvancedConfigurator from './advanced-configurator.jsx'
 
 const styles = {
   root: {
-    marginTop: '5em'
   }
 }
 
