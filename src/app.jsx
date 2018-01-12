@@ -5,6 +5,7 @@ import {
   Snackbar,
   withStyles
 } from 'material-ui'
+import Reboot from 'material-ui/Reboot'
 import TitleBar from './components/title-bar.jsx'
 import Configurator from './components/configurator.jsx'
 import ConfigViewer from './components/config-viewer.jsx'
@@ -43,6 +44,7 @@ class App extends Component {
 
   render = () => (
     <div className={this.props.classes.root}>
+      <Reboot />
       <TitleBar />
       <Grid container spacing={16} justify='center'>
         <Grid item xs={12} sm={6} lg={4}>
