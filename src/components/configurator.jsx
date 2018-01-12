@@ -1,22 +1,15 @@
 import React from 'react'
-import {
-  ExpansionPanel,
+import ExpansionPanel, {
   ExpansionPanelSummary,
-  ExpansionPanelDetails,
-  Typography,
-  withStyles
-} from 'material-ui'
+  ExpansionPanelDetails
+} from 'material-ui/ExpansionPanel'
+import Typography from 'material-ui/Typography'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import BasicConfigurator from './basic-configurator.jsx'
 import AdvancedConfigurator from './advanced-configurator.jsx'
 
-const styles = {
-  root: {
-  }
-}
-
-const Configurator = ({ classes }) => (
-  <div className={classes.root}>
+const Configurator = () => (
+  <div>
     <ExpansionPanel defaultExpanded>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <Typography type='subheading'>Basic Configuration</Typography>
@@ -36,4 +29,4 @@ const Configurator = ({ classes }) => (
   </div>
 )
 
-export default withStyles(styles)(Configurator)
+export default Configurator

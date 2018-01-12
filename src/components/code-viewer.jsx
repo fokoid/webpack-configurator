@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import {
-  Button,
-  Typography,
-  ExpansionPanel,
+import Button from 'material-ui/Button'
+import Typography from 'material-ui/Typography'
+import ExpansionPanel, {
   ExpansionPanelSummary,
   ExpansionPanelDetails,
-  ExpansionPanelActions,
-  withStyles
-} from 'material-ui'
+  ExpansionPanelActions
+} from 'material-ui/ExpansionPanel'
 import ConditionalTooltip from './conditional-tooltip.jsx'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
@@ -22,6 +20,7 @@ registerLanguage('javascript', javascript)
 registerLanguage('json', json)
 registerLanguage('sh', bash)
 
+import { withStyles } from 'material-ui/styles'
 const styles = {
   title: {
     minHeight: '32px',

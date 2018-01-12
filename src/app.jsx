@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import {
-  Typography,
-  Grid,
-  Snackbar,
-  withStyles
-} from 'material-ui'
+import Typography from 'material-ui/Typography'
+import Grid from 'material-ui/Grid'
 import Reboot from 'material-ui/Reboot'
 import TitleBar from './components/title-bar.jsx'
 import Configurator from './components/configurator.jsx'
@@ -13,6 +9,7 @@ import NotificationSnack from './components/notification-snack.jsx'
 
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import { teal, amber } from 'material-ui/colors'
+import { withStyles } from 'material-ui/styles'
 
 const theme = createMuiTheme({
   palette: {

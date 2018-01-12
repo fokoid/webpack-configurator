@@ -1,5 +1,5 @@
 import React from 'react'
-import {Tooltip} from 'material-ui'
+import Tooltip from 'material-ui/Tooltip'
 
 const ConditionalTooltip = ({
   enabled,

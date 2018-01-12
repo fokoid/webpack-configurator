@@ -1,5 +1,5 @@
 import React from 'react'
-import { Snackbar } from 'material-ui'
+import Snackbar from 'material-ui/Snackbar'
 
 const NotificationSnack = ({id, open, message, onClose}) => (
   <Snackbar

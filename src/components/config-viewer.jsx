@@ -1,25 +1,9 @@
 import React from 'react'
-import {
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
-  ExpansionPanelActions,
-  Button,
-  Paper,
-  Typography,
-  withStyles
-} from 'material-ui'
-import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import urlJoin from 'url-join'
 import CodeViewer from './code-viewer.jsx'
 
-const styles = {
-  root: {
-  }
-}
-
 const ConfigView = ({ classes, configs, baseUrl, sendNotification }) => (
-  <div className={classes.root}>
+  <div>
     {configs.map(({filename, language, content}) => <CodeViewer
       key={filename}
       language={language}
@@ -33,4 +17,4 @@ const ConfigView = ({ classes, configs, baseUrl, sendNotification }) => (
   </div>
 )
 
-export default withStyles(styles)(ConfigView)
+export default ConfigView

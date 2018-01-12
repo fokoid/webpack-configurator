@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
-import {
-  Typography
-} from 'material-ui'
+import Typography from 'material-ui/Typography'
 
 class AdvancedConfigurator extends Component {
   state = {}
