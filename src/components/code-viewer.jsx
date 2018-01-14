@@ -79,8 +79,7 @@ class CodeViewer extends Component {
           text='Cannot download dotfiles due to browser filename restrictions.'
         >
           <Button
-            dense
-            color='primary'
+            color='accent'
             href={`data:text/plain,${this.state.content}`}
             download={this.props.filename}
             onClick={this.props.callbacks.download}
@@ -88,16 +87,15 @@ class CodeViewer extends Component {
           >Download</Button>
         </ConditionalTooltip>
         <Button
-          dense
-          color='primary'
+          color='accent'
           href={this.props.url}
           target='_blank'
           onClick={this.props.callbacks.open}
         >Open</Button>
         <CopyToClipboard text={this.state.content}>
           <Button
-            dense
-            color='primary'
+            raised
+            color='accent'
             onClick={this.props.callbacks.copy}
           >Copy</Button>
         </CopyToClipboard>
