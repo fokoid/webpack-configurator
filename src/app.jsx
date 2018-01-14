@@ -8,13 +8,18 @@ import ConfigViewer from './components/config-viewer.jsx'
 import NotificationSnack from './components/notification-snack.jsx'
 
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
-import { teal, amber } from 'material-ui/colors'
+import teal from 'material-ui/colors/teal'
+import amber from 'material-ui/colors/amber'
 import { withStyles } from 'material-ui/styles'
 
 const theme = createMuiTheme({
   palette: {
-    primary: teal,
-    secondary: amber
+    primary: {
+      main: teal[700]
+    },
+    secondary: {
+      main: amber['A400']
+    }
   }
 })
 
