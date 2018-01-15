@@ -1,9 +1,11 @@
 import React from 'react'
 import urlJoin from 'url-join'
 import CodeViewer from './code-viewer.jsx'
+import ConfigSummary from './config-summary.jsx'
 
 const ConfigView = ({ classes, configs, baseUrl, sendNotification }) => (
   <div>
+    <ConfigSummary files={configs.map(config => config.filename)} />
     {configs.map(({filename, language, content}) => <CodeViewer
       key={filename}
       language={language}
