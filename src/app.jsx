@@ -37,8 +37,25 @@ class App extends Component {
       id: 0,
       open: false,
       message: ''
+    },
+    config: {
+      split: false,
+      babel: true,
+      react: false,
+      styles: true,
+      media: true,
+      entry: './src/index.js',
+      output: 'bundle.js',
+      distDir: 'dist'
     }
   }
+
+  configCallback = name => ({target}) => void this.setState(oldState => ({
+    config: {
+      ...oldState.config,
+      [name]: target.type === 'checkbox' ? target.checked : target.value
+    }
+  }))
 
   sendNotification = message => {
     this.setState(oldState => ({
@@ -62,7 +79,7 @@ class App extends Component {
         <TitleBar />
         <Grid container spacing={16} justify='center'>
           <Grid item xs={12} sm={6} md={5} lg={4} xl={3}>
-            <Configurator />
+            <Configurator configCallback={this.configCallback} config={this.state.config} />
           </Grid>
           <Grid item xs={12} sm={6} md={5} lg={4} xl={3}>
             <ConfigViewer

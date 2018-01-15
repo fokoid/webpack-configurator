@@ -8,14 +8,14 @@ import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import BasicConfigurator from './basic-configurator.jsx'
 import AdvancedConfigurator from './advanced-configurator.jsx'
 
-const Configurator = () => (
+const Configurator = ({configCallback, config}) => (
   <div>
     <ExpansionPanel defaultExpanded>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <Typography type='subheading'>Basic Configuration</Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-        <BasicConfigurator />
+        <BasicConfigurator configCallback={configCallback} config={config} />
       </ExpansionPanelDetails>
     </ExpansionPanel>
     <ExpansionPanel>
